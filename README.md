@@ -9,3 +9,4 @@ Run or Build in Main -> App or Run SanPhamController in folder controller
 Login:
 User: admin
 Pass: 123
+Để chỉnh sửa click đúp vào tên sp, hoặc chuột phải vào sp để sửa hoặc xóa. Tìm kiếm tự động load data.
