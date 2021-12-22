@@ -84,30 +84,30 @@ public class SanphamController {
             }
         });
 
-//        view.getAdd().addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                viewSp = new NhanVienJdialog(main.app.mainFrame, true);
-//                viewSp.getTxtMaKH().setEditable(false);
-//
-//                viewSp.getBtnThem().addMouseListener(new MouseAdapter() {
-//                    @Override
-//                    public void mouseClicked(MouseEvent e) {
-//                        insertDataToDB();
-//                        getDataTotable();
-//                    }
-//                });
-//                viewSp.getBtnReset().addMouseListener(new MouseAdapter() {
-//                    @Override
-//                    public void mouseClicked(MouseEvent e) {
-//                        reset();
-//                    }
-//                });
-//                viewSp.setLocationRelativeTo(null);
-//                viewSp.setResizable(false);
-//                viewSp.setVisible(true);
-//            }
-//        });
+        view.getAdd().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                viewSp = new SanPhamJdialog(main.app.mainFrame, true);
+                viewSp.getTXtMasp().setEditable(false);
+
+                viewSp.getBtnThem().addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        insertDataToDB();
+                        getDataTotable();
+                    }
+                });
+                viewSp.getBtnReset().addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        reset();
+                    }
+                });
+                viewSp.setLocationRelativeTo(null);
+                viewSp.setResizable(false);
+                viewSp.setVisible(true);
+            }
+        });
         view.getTblBang().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -201,41 +201,40 @@ public class SanphamController {
         viewSp.gettxtSoluong().setText("");
     }
 
-//    public void insertDataToDB() {
-//        model = getModel();
-//        if (model != null) {
-//            try {
-//
-//                String sqlQueryInsert = "INSERT NHANVIEN(hoTen,ngaySinh,gioiTinh, diaChi) "
-//                        + "VALUES (?, ? ,? ,? )";
-//                PreparedStatement ps = connection.prepareStatement(sqlQueryInsert);
-//                ps.setString(1, model.getTenNV());
-//                ps.setDate(2, model.utilDateToSQLDate(model.getNgaySinh()));
-//                ps.setString(3, model.getGioiTinh());
-//                ps.setString(4, model.getDiaChi());
-//
-//                int result = ps.executeUpdate();
-//                if (result == 1) {
-//                    {
-//                        JOptionPane.showMessageDialog(view, "Thêm thành công!");
-//                        reset();
-//                    }
-//                } else {
-//                    JOptionPane.showMessageDialog(view, "Thêm thất bại!");
-//                }
-//                ps.close();
-//            } catch (SQLException ex) {
-//                if (ex.toString().contains("PRIMARY KEY")) {
-//                    JOptionPane.showMessageDialog(view, "Trùng khoá chính!");
-//                } else if (ex.toString().contains("String or binary data would be truncated")) {
-//                    JOptionPane.showMessageDialog(view, "Không thể để 1 trường quá dài!");
-//                } else {
-//                    Logger.getLogger(SanphamController.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//        }
-//
-//    }
+    public void insertDataToDB() {
+        model = getModel();
+        if (model != null) {
+            try {
+
+                String sqlQueryInsert = "INSERT SanPham(tenSp,soLuong,donGia) "
+                        + "VALUES (?, ? ,?)";
+                PreparedStatement ps = connection.prepareStatement(sqlQueryInsert);
+                ps.setString(1, model.getTenSP());
+                ps.setInt(2, model.getSoLuong());
+                ps.setInt(3, model.getDongia());
+
+                int result = ps.executeUpdate();
+                if (result == 1) {
+                    {
+                        JOptionPane.showMessageDialog(view, "Thêm thành công!");
+                        reset();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(view, "Thêm thất bại!");
+                }
+                ps.close();
+            } catch (SQLException ex) {
+                if (ex.toString().contains("PRIMARY KEY")) {
+                    JOptionPane.showMessageDialog(view, "Trùng khoá chính!");
+                } else if (ex.toString().contains("String or binary data would be truncated")) {
+                    JOptionPane.showMessageDialog(view, "Không thể để 1 trường quá dài!");
+                } else {
+                    Logger.getLogger(SanphamController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+    }
     public void btnSuaPerformed() {
         model = getModel();
         if (model != null) {

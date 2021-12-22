@@ -1,7 +1,7 @@
-create database QLNV
+create database QLSanpham
 go
 
-use QLNV
+use QLSanpham
 go
 CREATE TABLE [dbo].[TAIKHOAN](
 	[tai_khoan] [varchar](15) primary key,
@@ -10,12 +10,11 @@ CREATE TABLE [dbo].[TAIKHOAN](
 	traloi nvarchar(50) null
 )
 go
-CREATE TABLE [dbo].[NHANVIEN](
-	maNV bigint IDENTITY(1,1) primary key,
-	[hoTen] [nvarchar](50) NOT NULL,
-	[ngaySinh] [date] NULL,
-	[gioiTinh] [nvarchar](3) NULL,
-	[diaChi] [nvarchar](200) NULL,
+CREATE TABLE [dbo].[SanPham](
+	maSp bigint IDENTITY(1,1) primary key,
+	[tenSp] [nvarchar](50) NOT NULL,
+	[soLuong] int NULL,
+	[donGia] int NULL,
 )
 go
 
@@ -24,7 +23,7 @@ values('admin','123',null,null)
 go
 
 
-INSERT INTO NHANVIEN (hoTen, diaChi, gioiTinh, ngaySinh) VALUES
-(N'Phạm Thanh Nam',	N'Số 347, tổ 1, đường Phúc Diễn, Xuân Phương, Nam Từ Liêm',N'Nam','07/07/1980'),
-(N'Chu Trung Toàn',	N'Số 2 đường Châu Văn Liêm, Phú Đô, Nam Từ Liêm',N'Nam',	'07/08/1980'),
-(N'Triệu Văn Hiển',	N'Số 48, Tổ 2, Xuân Phương, Nam Từ Liêm',N'Nam',	'07/09/1980');
+INSERT INTO SanPham (tenSp, soLuong, donGia) VALUES
+(N'Bút mực',10, 2000),
+(N'Bút chì',20, 5000),
+(N'Bút bi',10, 10000);
